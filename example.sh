@@ -24,14 +24,17 @@ fi
 
 echo "Using the cli to write new data into Factom"
 
+echo ">factom-cli importaddress sand Fs3E9gV6DXsYzf7Fqx1fVBQPQXV695eP3k5XbmHEZVRLkMdD9qCK"
+factom-cli importaddress sand Fs3E9gV6DXsYzf7Fqx1fVBQPQXV695eP3k5XbmHEZVRLkMdD9qCK
+
 echo "creating factoid and entry credit addresses"
 factom-cli generateaddress ec app
 
 echo "buying entry credits with factoid address"
 factom-cli newtransaction ecpurchase
-factom-cli addinput ecpurchase 01-Fountain 2
+factom-cli addinput ecpurchase sand 2
 factom-cli addecoutput ecpurchase app 2
-factom-cli addfee ecpurchase 01-Fountain
+factom-cli addfee ecpurchase sand
 factom-cli sign ecpurchase
 factom-cli submit ecpurchase
 echo "
@@ -63,12 +66,10 @@ in the block (production system will have 10 minute blocks)
 "
 sleep $st
 
-echo "get the newest entry block for my chain"
-eblock=$(factom-cli get chain 9e54c63c6ccf2f1e7bb6e86a4e026b63c5665dca2b649c1cb407d2e39d7e83f3)
-factom-cli get eblock $eblock
-ehash=$(factom-cli get eblock $eblock | grep EntryHash | awk '{print $2}')
+ehash=$(factom-cli get chainhead 9e54c63c6ccf2f1e7bb6e86a4e026b63c5665dca2b649c1cb407d2e39d7e83f3 | grep EntryHash | awk '{print $2}')
 
 echo "get the entry out of the entry block"
+echo "factom-cli get entry " $ehash
 factom-cli get entry $ehash
 
 
