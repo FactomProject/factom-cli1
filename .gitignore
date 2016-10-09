@@ -15,6 +15,7 @@ _test
 bin
 pkg
 .idea
+vendor/
 
 # Architecture specific extensions/prefixes
 *.[568vq]
