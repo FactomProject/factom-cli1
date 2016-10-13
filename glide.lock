@@ -1,5 +1,5 @@
-hash: 326386f3dc4ce80fae3920866156fa31f4ed2d98fab75ef998b3280034135863
-updated: 2016-10-09T18:02:15.502539882-04:00
+hash: c5d6f155bdaa8a6853358a88f1e16d79d3aca0aadb36bafe895beaa720c22128
+updated: 2016-10-13T18:07:42.347202609-04:00
 imports:
 - name: github.com/btcsuitereleases/btcutil
   version: f2b1058a82554c0c7c3b8809c5956c38374604d8
@@ -42,7 +42,7 @@ imports:
 - name: github.com/FactomProject/netki-go-partner-client
   version: 426acb535e66cc2f9e6226ae254555e3572fd142
 - name: golang.org/x/crypto
-  version: d172538b2cfce0c13cee31e647d0367aa8cd2486
+  version: 5f31782cfb2b6373211f8f9fbf31283fa234b570
   subpackages:
   - pbkdf2
   - ripemd160

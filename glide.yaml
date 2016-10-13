@@ -20,7 +20,7 @@ import:
 - package: github.com/FactomProject/ed25519
   version: master
 - package: github.com/FactomProject/factom
-  version: m2
+  version: 6536534bba71542f3e39fe19a78762202680b4df
   subpackages:
   - wallet
   - wallet/wsapi
