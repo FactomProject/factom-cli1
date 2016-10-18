@@ -476,11 +476,12 @@ var sendtx = func() *fctCmd {
 // sendfct sends factoids between 2 addresses
 var sendfct = func() *fctCmd {
 	cmd := new(fctCmd)
-	cmd.helpMsg = "factom-cli sendfct FROMADDRESS TOADDRESS AMOUNT"
+	cmd.helpMsg = "factom-cli sendfct [-rt] FROMADDRESS TOADDRESS AMOUNT"
 	cmd.description = "Send Factoids between 2 addresses"
 	cmd.execFunc = func(args []string) {
 		os.Args = args
-		var res = flag.Bool("r", false, "resolve dns address")
+		res := flag.Bool("r", false, "resolve dns address")
+		tflag := flag.Bool("t", false, "Print the TxID")
 		flag.Parse()
 		args = flag.Args()
 
@@ -515,7 +516,11 @@ var sendfct = func() *fctCmd {
 			errorln(err)
 			return
 		}
-		fmt.Println("TxID:", t)
+		if *tflag {
+			fmt.Println(t)
+		} else {
+			fmt.Println("TxID:", t)
+		}
 	}
 	help.Add("sendfct", cmd)
 	return cmd
@@ -524,11 +529,12 @@ var sendfct = func() *fctCmd {
 // buyec sends factoids between 2 addresses
 var buyec = func() *fctCmd {
 	cmd := new(fctCmd)
-	cmd.helpMsg = "factom-cli buyec FCTADDRESS ECADDRESS ECAMOUNT"
+	cmd.helpMsg = "factom-cli buyec [-rt] FCTADDRESS ECADDRESS ECAMOUNT"
 	cmd.description = "Buy entry credits"
 	cmd.execFunc = func(args []string) {
 		os.Args = args
-		var res = flag.Bool("r", false, "resolve dns address")
+		res := flag.Bool("r", false, "resolve dns address")
+		tflag := flag.Bool("t", false, "Print the TxID")
 		flag.Parse()
 		args = flag.Args()
 
@@ -569,7 +575,11 @@ var buyec = func() *fctCmd {
 			errorln(err)
 			return
 		}
-		fmt.Println("TxID:", t)
+		if *tflag {
+			fmt.Println(t)
+		} else {
+			fmt.Println("TxID:", t)
+		}
 	}
 	help.Add("buyec", cmd)
 	return cmd

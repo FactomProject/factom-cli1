@@ -15,14 +15,6 @@ type helper struct {
 	topics map[string]*fctCmd
 }
 
-// NewHelper creates a new helper object containing the help messages for a set
-// of commands.
-func newHelper() *helper {
-	h := new(helper)
-	h.topics = make(map[string]*fctCmd)
-	return h
-}
-
 func (h *helper) Add(s string, c *fctCmd) {
 	h.topics[s] = c
 }
@@ -65,4 +57,10 @@ func (h *helper) Execute(args []string) {
 	fmt.Printf("%s\n\t%s\n", c.helpMsg, c.description)
 }
 
-var help = newHelper()
+// Create a new helper object containing the help messages for a set of
+// commands.
+var help = func() *helper {
+	h := new(helper)
+	h.topics = make(map[string]*fctCmd)
+	return h
+}()

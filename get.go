@@ -273,10 +273,10 @@ var getHeights = func() *fctCmd {
 	cmd.description = "Get the current heights of various blocks in factomd."
 	cmd.execFunc = func(args []string) {
 		os.Args = args
-		dflag := flag.Bool("d", false, "Display DBlock height")
-		lflag := flag.Bool("l", false, "Display Leader height")
-		bflag := flag.Bool("b", false, "Display EBlock height")
-		eflag := flag.Bool("e", false, "Display Entry height")
+		dflag := flag.Bool("d", false, "Print DBlock height")
+		lflag := flag.Bool("l", false, "Print Leader height")
+		bflag := flag.Bool("b", false, "Print EBlock height")
+		eflag := flag.Bool("e", false, "Print Entry height")
 		flag.Parse()
 		args = flag.Args()
 
