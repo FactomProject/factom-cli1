@@ -31,7 +31,7 @@ func (h *helper) All() {
 	flag.Usage()
 
 	fmt.Println()
-	keys := make([]string, 0)
+	var keys []string
 	for k := range h.topics {
 		keys = append(keys, k)
 	}

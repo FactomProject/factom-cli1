@@ -78,7 +78,7 @@ var addchain = func() *fctCmd {
 			errorln(err)
 			return
 		}
-		fmt.Println("Commiting Chain Transaction ID:", txID)
+		fmt.Println("TxID:", txID)
 
 		// TODO - get commit acknowledgement
 

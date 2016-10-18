@@ -269,15 +269,37 @@ var getHead = func() *fctCmd {
 
 var getHeights = func() *fctCmd {
 	cmd := new(fctCmd)
-	cmd.helpMsg = "factom-cli get heights"
-	cmd.description = "Get the current heights of various blocks in factomd"
+	cmd.helpMsg = "factom-cli get heights [-dlbe]"
+	cmd.description = "Get the current heights of various blocks in factomd."
 	cmd.execFunc = func(args []string) {
-		height, err := factom.GetHeights()
+		os.Args = args
+		dflag := flag.Bool("d", false, "Display DBlock height")
+		lflag := flag.Bool("l", false, "Display Leader height")
+		bflag := flag.Bool("b", false, "Display EBlock height")
+		eflag := flag.Bool("e", false, "Display Entry height")
+		flag.Parse()
+		args = flag.Args()
+
+		// get the heights from factom
+		heights, err := factom.GetHeights()
 		if err != nil {
 			errorln(err)
 			return
 		}
-		fmt.Println(height.String())
+
+		// display the requested heights. Human readable heights by default.
+		switch {
+		case *dflag:
+			fmt.Println(heights.DirectoryBlockHeight)
+		case *lflag:
+			fmt.Println(heights.LeaderHeight)
+		case *bflag:
+			fmt.Println(heights.EntryBlockHeight)
+		case *eflag:
+			fmt.Println(heights.EntryHeight)
+		default:
+			fmt.Println(heights)
+		}
 	}
 	help.Add("get heights", cmd)
 	return cmd
