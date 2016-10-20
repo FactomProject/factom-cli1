@@ -529,12 +529,12 @@ var sendfct = func() *fctCmd {
 // buyec sends factoids between 2 addresses
 var buyec = func() *fctCmd {
 	cmd := new(fctCmd)
-	cmd.helpMsg = "factom-cli buyec [-rt] FCTADDRESS ECADDRESS ECAMOUNT"
+	cmd.helpMsg = "factom-cli buyec [-T] [-r] FCTADDRESS ECADDRESS ECAMOUNT"
 	cmd.description = "Buy entry credits"
 	cmd.execFunc = func(args []string) {
 		os.Args = args
 		res := flag.Bool("r", false, "resolve dns address")
-		tflag := flag.Bool("t", false, "Print the TxID")
+		tflag := flag.Bool("T", false, "Print the TxID")
 		flag.Parse()
 		args = flag.Args()
 
