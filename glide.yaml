@@ -1,0 +1,9 @@
+package: github.com/FactomProject/factom-cli1
+import:
+- package: github.com/FactomProject/cli
+- package: github.com/FactomProject/factoid
+- package: github.com/FactomProject/factom
+- package: github.com/FactomProject/fctwallet
+  subpackages:
+  - Wallet/Utility
+- package: gopkg.in/gcfg.v1
